@@ -1,12 +1,17 @@
-import React from "react";
-import logo from "./logo.svg";
+import { Fragment } from "react";
 import "./App.css";
+import { BrowserRouter, Router } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
+import Layout from "./components/layout/Layout";
+import Header from "./components/layout/Header";
 
 function App() {
   return (
-    <div className="App">
-      <h1>this is working by rafi muhammadi</h1>
-    </div>
+    <Fragment>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </Fragment>
   );
 }
 
