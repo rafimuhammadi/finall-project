@@ -1,4 +1,22 @@
+import { Fragment } from "react";
+import Card from "./layout/Card";
+import style from "../../src/assets/css/TodoList.module.css";
+import Button from "./layout/Button";
+import { Link } from "react-router-dom";
+import TodoList from "./todo/TodoList";
 const Home = () => {
-  return <p>Wellcome To My Todo App!</p>;
+  return (
+    <Fragment>
+      <Card className={style.TodoList}>
+        <Button type="submit" className={style.btn}>
+          <Link to="add-todo" className={style.addButton}>
+            Add New
+          </Link>
+        </Button>
+        <hr />
+        <TodoList />
+      </Card>
+    </Fragment>
+  );
 };
 export default Home;

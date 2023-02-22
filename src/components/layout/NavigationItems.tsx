@@ -3,14 +3,8 @@ import classes from "../../assets/css/NavigationItem.module.css";
 const NavigationItems = (props: any) => {
   return (
     <li className={classes.NavigationItem}>
-      {/* <NavLink to={props.link} className={classes.active}>
-        {props.children}
-      </NavLink>
       <Link to={props.link} className={""}>
-        {props.children}
-      </Link> */}
-      <Link to="add-item" className={""}>
-        Add New
+        {props.title}
       </Link>
     </li>
   );
