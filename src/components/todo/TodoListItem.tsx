@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../layout/Button";
 const TodoListItem = ({ index, data, id, HandleRemove }: any) => {
   return (
@@ -8,6 +9,11 @@ const TodoListItem = ({ index, data, id, HandleRemove }: any) => {
       <td>
         <Button onClick={() => HandleRemove(id)} className={"button"}>
           X
+        </Button>
+        <Button className={"button"}>
+          <Link to={`edit-todo/${id}`} className={"link"}>
+            Edit
+          </Link>
         </Button>
       </td>
     </tr>

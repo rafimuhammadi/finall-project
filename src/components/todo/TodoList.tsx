@@ -28,7 +28,7 @@ const TodoList = () => {
   };
   useEffect(() => {
     getDataFromAPI();
-  }, [data]);
+  }, []);
 
   const HandleRemove = async (recordsID: number) => {
     setLoader(true);

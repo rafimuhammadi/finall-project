@@ -3,10 +3,10 @@
   border: 1px solid #c39468;
   background: #8f5c2c;
   color: white;
-  padding: 0.75rem 3.5rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 1.15rem;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 
 .button:hover,
@@ -27,4 +27,39 @@ button:active:disabled {
   border-color: #ccc;
   color: #666666;
   cursor: not-allowed;
+}
+
+.btn-success {
+  font: inherit;
+  border: 1px solid #6bc368;
+  background: #6bc368;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 1.15rem;
+  border-radius: 10px;
+}
+
+.btn-success:hover,
+.btn-success:active {
+  background: #c39468;
+  border-color: #c39468;
+}
+
+.btn-success:focus {
+  outline: none;
+}
+
+btn-success:disabled,
+btn-success:focus:disabled,
+btn-success:hover:disabled,
+btn-success:active:disabled {
+  background: #ccc;
+  border-color: #ccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.link {
+  text-decoration: none;
 }
