@@ -3,7 +3,7 @@ import Button from "../layout/Button";
 const TodoListItem = ({ index, data, id, HandleRemove }: any) => {
   return (
     <tr key={index}>
-      <td>{index}</td>
+      <td>{index + 1}</td>
       <td> {data.fields.title}</td>
       <td> {data.fields.description}</td>
       <td>

@@ -10,6 +10,7 @@ const AddTodo = () => {
   const [description, setDescription] = useState("");
   const [DescriptionIsValid, setDescriptionIsValid] = useState(true);
   const [formIsValid, setFormIsValid] = useState(false);
+  const [loader, setLoader] = useState(false);
   const titleChangeHandler = (event: any) => {
     setTitle(event.target.value);
     setFormIsValid(
@@ -32,6 +33,7 @@ const AddTodo = () => {
 
   const submitHandler = async (event: any) => {
     event.preventDefault();
+    setLoader(true);
     try {
       const dataToPost = {
         fields: {
@@ -55,6 +57,7 @@ const AddTodo = () => {
                         ${response.status}`;
         throw new Error(message);
       }
+      setLoader(false);
       const result = await response.json();
       // setTitle("");
       navigate("/");
@@ -97,7 +100,7 @@ const AddTodo = () => {
         </div>
         <div className={style.actions}>
           <Button type="submit" className={style.btn} disabled={!formIsValid}>
-            Save
+            {loader ? "Please Waite..." : "Save"}
           </Button>
         </div>
       </form>

@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import style from "../../assets/css/TodoList.module.css";
 import Loader from "../../assets/images/loader.gif";
 import TodoListItem from "./TodoListItem";
-const TodoList = () => {
+const TodoList = (props: any) => {
   const [data, setdata] = useState([]);
   const [loader, setLoader] = useState(true);
+  const searchResult = props.searchData;
   const getDataFromAPI = async () => {
     try {
       const response = await fetch(
@@ -28,7 +29,7 @@ const TodoList = () => {
   };
   useEffect(() => {
     getDataFromAPI();
-  }, []);
+  }, [data]);
 
   const HandleRemove = async (recordsID: number) => {
     setLoader(true);
@@ -71,18 +72,29 @@ const TodoList = () => {
             </tr>
           </thead>
           <tbody>
-            {data &&
-              data.map((d: any, i) => {
-                return (
-                  <TodoListItem
-                    index={i}
-                    key={d.id}
-                    data={d}
-                    id={d.id}
-                    HandleRemove={HandleRemove}
-                  />
-                );
-              })}
+            {searchResult.length > 0
+              ? searchResult.map((d: any, i: number) => {
+                  return (
+                    <TodoListItem
+                      index={i}
+                      key={d.id}
+                      data={d}
+                      id={d.id}
+                      HandleRemove={HandleRemove}
+                    />
+                  );
+                })
+              : data.map((d: any, i) => {
+                  return (
+                    <TodoListItem
+                      index={i}
+                      key={d.id}
+                      data={d}
+                      id={d.id}
+                      HandleRemove={HandleRemove}
+                    />
+                  );
+                })}
           </tbody>
         </table>
       )}

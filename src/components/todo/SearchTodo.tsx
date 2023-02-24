@@ -1,13 +1,12 @@
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import style from "../../assets/css/AddTodo.module.css";
 import Button from "../layout/Button";
 
-const SearchTodo = () => {
-  const navigate = useNavigate();
+const SearchTodo = (props: any) => {
   const [title, setTitle] = useState("");
   const [TitleIsValid, setTitleIsValid] = useState(true);
   const [formIsValid, setFormIsValid] = useState(false);
+  const [loader, setLoader] = useState(false);
   const titleChangeHandler = (event: any) => {
     setTitle(event.target.value);
     setFormIsValid(event.target.value.trim() != "" ? true : false);
@@ -18,9 +17,12 @@ const SearchTodo = () => {
 
   const submitHandler = async (event: any) => {
     event.preventDefault();
+    setLoader(true);
     try {
       const response = await fetch(
-        `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/todoListTable/${title}`,
+        `https://api.airtable.com/v0/${
+          process.env.REACT_APP_AIRTABLE_BASE_ID
+        }/todoListTable?filterByFormula={title}='${title.trim()}'`,
         {
           method: "GET",
           headers: {
@@ -35,7 +37,9 @@ const SearchTodo = () => {
         throw new Error(message);
       }
       const result = await response.json();
-      console.log(result);
+      props.searchResult(result.records);
+      props.onSetLoader(false);
+      setLoader(false);
     } catch (error: any) {
       console.log(error.message);
       return null;
@@ -58,7 +62,7 @@ const SearchTodo = () => {
         />
         &nbsp;
         <Button type="submit" className={style.btn} disabled={!formIsValid}>
-          Save
+          {loader ? "Please Wait..." : "Search"}
         </Button>
       </div>
     </form>

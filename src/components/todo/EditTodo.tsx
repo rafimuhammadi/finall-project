@@ -71,7 +71,7 @@ const EditTodo = () => {
       const response = await fetch(
         `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/todoListTable/${params.id}`,
         {
-          method: "edit",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
