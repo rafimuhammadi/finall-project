@@ -8,7 +8,6 @@ import SearchTodo from "./todo/SearchTodo";
 const Home = () => {
   const [Searchdata, setdata] = useState([]);
   const [loader, setSearchingLoader] = useState(false);
-  console.log(Searchdata);
   return (
     <Fragment>
       <Card className={style.TodoList}>

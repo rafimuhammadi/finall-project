@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import style from "../../assets/css/TodoList.module.css";
 import Loader from "../../assets/images/loader.gif";
+import { todoType } from "../__model";
 import TodoListItem from "./TodoListItem";
 const TodoList = (props: any) => {
   const [data, setdata] = useState([]);
@@ -73,7 +74,7 @@ const TodoList = (props: any) => {
           </thead>
           <tbody>
             {searchResult.length > 0
-              ? searchResult.map((d: any, i: number) => {
+              ? searchResult.map((d: todoType, i: number) => {
                   return (
                     <TodoListItem
                       index={i}
@@ -84,7 +85,7 @@ const TodoList = (props: any) => {
                     />
                   );
                 })
-              : data.map((d: any, i) => {
+              : data.map((d: todoType, i) => {
                   return (
                     <TodoListItem
                       index={i}
